@@ -7,7 +7,7 @@
 body {
     height: 100vh;
     display: flex;
-    background-color: rgb(188, 248, 228);
+    background-image: url(../_img/fundo-game.png);
 }
 
 .memory-game{
@@ -16,6 +16,7 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    perspective: 1000px;
 }
 
 .card {
@@ -26,6 +27,8 @@ body {
     box-shadow: 1px 1px 1px rgba(1, 1, 1, 0.3);
     cursor: pointer;
     transform: scale(1);
+    transform-style: preserve-3d; /* Não deixa o elemento achatado no plano*/
+    transition: transform .9s;
 }
 
 .card:active{
@@ -41,5 +44,15 @@ body {
     position: absolute;
     border-radius: 5px;
     background: #ffffff;
+    backface-visibility: hidden;/* propriedade que esconde o verso de um elemento*/
 }
 
+.card-front{
+    transform: rotateY(180deg);
+}
+
+/* flip card animation*/
+
+.card.flipped{
+    transform: rotateY(180deg);
+}
